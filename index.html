@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstagramWeb</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram</title>
+  <!--Bootstrap-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+  <!-- Latest compiled JavaScript -->
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="./sources/css/inicio.css">
 </head>
+
 <body>
-    <h1>Hola A Todos</h1>
+
+  <!--Firebase-->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAtxgdwHs3WorRk5bHONm6IYXhZ-IWo27A",
+      authDomain: "instagramwebfinal.firebaseapp.com",
+      databaseURL: "https://instagramwebfinal.firebaseio.com",
+      projectId: "instagramwebfinal",
+      storageBucket: "instagramwebfinal.appspot.com",
+      messagingSenderId: "864986905548",
+      appId: "1:864986905548:web:8eca90a4bc123e35dd3b69"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <!--END Firebase-->
+
+  <div class="container">
+    <div class="principal">
+      <div class="hijo">
+
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
