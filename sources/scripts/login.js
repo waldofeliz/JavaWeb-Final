@@ -22,6 +22,7 @@ crearUsuario = async () => {
 	let email = document.getElementById('txtRemail').value
 	let password = document.getElementById('txtRpassword').value
 	let confirmPassword = document.getElementById('txtRconfirmPassword').value
+	let mensajeError = ''
 
 	if(userName ===''){
 		return alert('El campo de usuario puede estar vacio')
@@ -35,31 +36,32 @@ crearUsuario = async () => {
 	
 	
 	const userAuth = await firebase.auth().createUserWithEmailAndPassword(email, password)
-	/*.then(function(user){
-		let usuario = user.user.uid
-		console.log('Usuario',usuario)
+	.catch(error => {
+		mensajeError = error.message
 	})
-	.catch(function(error) {
-		// Handle Errors here.
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		alert(errorCode)
-		alert(errorMessage)
-		// ...
-	  });
-	  */
+
+	if(mensajeError.length > 0)
+	return alert(mensajeError.toString())
+
 	  let user = {
 			username: userName,
 		  	email: email,
 			uid: userAuth.user.uid
 	  }
+	  if(userAuth.user.id.length > 0)
+	  guardar(user)
+}
 
-	  db.ref('users/' + user.uid).set(user)
-	  .then(us => {
-		  console.log('User Create: ',us)
-	  })
-	  .catch(error=> {
-		  console.log('Error User: ',error.message)
-	  })
-
+ guardar = (user) => {
+	db.collection('users').add({
+		username : user.username,
+		email : user.email,
+		uid : user.uid
+	})
+	.then(us => {
+		console.log('us: ',us)
+	})
+	.catch(error => {
+		console.log('error: ',error)
+	})
 }
