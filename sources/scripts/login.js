@@ -1,68 +1,106 @@
-$(function() {
+$(function () {
 
-    $('#login-form-link').click(function(e) {
+	$('#login-form-link').click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
+		$("#register-form").fadeOut(100);
 		$('#register-form-link').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-	$('#register-form-link').click(function(e) {
+	$('#register-form-link').click(function (e) {
 		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
+		$("#login-form").fadeOut(100);
 		$('#login-form-link').removeClass('active');
 		$(this).addClass('active');
 		e.preventDefault();
 	});
 
 
-//Botones
-let btnEnviar = document.getElementById('btnEnviar')
+	//Botones
+	let btnEnviar = document.getElementById('btnEnviar')
+	let btnRegistrar = document.getElementById('btnRegistrar')
+	let btnLogin = document.getElementById('btnLogin')
 
 
+	//Eventos boton
+	btnEnviar.onclick = () => {
+		restablecerPassword()
+	}
+	btnRegistrar.onclick = function () {
+		crearUsuario()
+	}
+	btnLogin.onclick = function () {
+		loginUsuario()
+	}
 
-//Eventos boton
-btnEnviar.onclick = function() {
-	modal.style.display = "block"
-  }
 
+	// Get the modal
+	var modal = document.getElementById("myModal")
 
-// Get the modal
-var modal = document.getElementById("myModal")
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn")
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn")
+	//Get btnClose 
+	var btnClose = document.getElementById('btnClose')
 
-//Get btnClose 
-var btnClose = document.getElementById('btnClose')
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0]
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0]
+	// When the user clicks the button, open the modal 
+	btn.onclick = () => {
+		modal.style.display = "block"
+	}
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block"
+	// When the user clicks the button close, close modal
+	btnClose.onclick = () => {
+		modal.style.display = "none"
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = () => {
+		modal.style.display = "none"
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = (event) => {
+		if (event.target == modal) {
+			modal.style.display = "none"
+		}
+	}
+
+//Remember me
+
+if (localStorage.chkbox && localStorage.chkbox != '') {
+    $('#rmCheck').attr('checked', 'checked');
+    $('#txtEmail').val(localStorage.username);
+	$('#txtpassword').val(localStorage.pass);
+} else {
+    $('#rmCheck').removeAttr('checked');
+    $('#txtEmail').val('');
+    $('#txtpassword').val('');
 }
 
-// When the user clicks the button close, close modal
-btnClose.onclick = function() {
-	modal.style.display = "none"
-  }
+$('#rmCheck').click(function () {
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none"
-}
+    if ($('#rmCheck').is(':checked')) {
+        // save username and password
+        localStorage.username = $('#txtEmail').val();
+        localStorage.pass = $('#signinPwd').val();
+		localStorage.chkbox = $('#txtpassword').val();		
+		alert('Email y Password almacenados en el navegador')
+    } else {
+        localStorage.username = '';
+        localStorage.pass = '';
+        localStorage.chkbox = '';
+    }
+});
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none"
-  }
-}
+
+//END remember me
 
 });
 
+//Funciones
 crearUsuario = async () => {
 	let userName = document.getElementById('txtRusername').value
 	let email = document.getElementById('txtRemail').value
@@ -70,44 +108,74 @@ crearUsuario = async () => {
 	let confirmPassword = document.getElementById('txtRconfirmPassword').value
 	let mensajeError = ''
 
-	if(userName ===''){
+	if (userName === '') {
 		return alert('El campo de usuario puede estar vacio')
-	}else if(email === ''){
+	} else if (email === '') {
 		return alert('El campo email no puede estar vacio')
-	} else if(password === ''){
+	} else if (password === '') {
 		return alert('El campo de password no puede estar vacio')
-	}else if(password !== confirmPassword){
+	} else if (password !== confirmPassword) {
 		return alert('Debe confirmar el password')
 	}
-	
-	
+
+
 	const userAuth = await firebase.auth().createUserWithEmailAndPassword(email, password)
-	.catch(error => {
-		mensajeError = error.message
-	})
+		.catch(error => {
+			mensajeError = error.message
+		})
 
-	if(mensajeError.length > 0)
-	return alert(mensajeError.toString())
+	if (mensajeError.length > 0)
+		return alert(mensajeError.toString())
 
-	  let user = {
-			username: userName,
-		  	email: email,
-			uid: userAuth.user.uid
-	  }
-	  if(userAuth.user.id.length > 0)
-	  guardar(user)
+	let user = {
+		username: userName,
+		email: email,
+		uid: userAuth.user.uid
+	}
+	if (userAuth.user.uid.length > 0)
+		guardar(user)
 }
 
- guardar = (user) => {
+guardar = (user) => {
 	db.collection('users').add({
-		username : user.username,
-		email : user.email,
-		uid : user.uid
+		username: user.username,
+		email: user.email,
+		uid: user.uid
 	})
-	.then(us => {
-		console.log('us: ',us)
+		.then(us => {
+			console.log('us: ', us)
+			alert('Usuario registrado satisfactoriamente')
+		})
+		.catch(error => {
+			console.log('error: ', error)
+		})
+}
+
+restablecerPassword = () => {
+	let emailReset = document.getElementById('txtEnviar').value
+	firebase.auth().sendPasswordResetEmail(emailReset)
+		.then(response => {
+			console.log('Response Reset: ', response)
+		})
+		.catch(error => {
+			console.log('Response Error: ', error)
+		})
+}
+
+loginUsuario = () => {
+	let email = document.getElementById('txtEmail').value
+	let password = document.getElementById('txtpassword').value
+
+	firebase.auth().signInWithEmailAndPassword(email, password)
+	.then(response => {
+		alert('Sesion iniciada')
+		window.location.href = './inicio.html'
+		return false
 	})
-	.catch(error => {
-		console.log('error: ',error)
-	})
+	.catch(function(error) {
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		return false
+	  });
+	  return false
 }
