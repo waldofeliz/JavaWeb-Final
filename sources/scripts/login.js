@@ -145,6 +145,7 @@ guardar = (user) => {
 		.then(us => {
 			console.log('us: ', us)
 			alert('Usuario registrado satisfactoriamente')
+			window.location.reload()
 		})
 		.catch(error => {
 			console.log('error: ', error)
