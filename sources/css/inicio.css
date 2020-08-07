@@ -1,16 +1,17 @@
 * {box-sizing: border-box;}
 
 body {
-  margin: 0;
+  display: flex;
+  flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .topnav {
   overflow: hidden;
-  /* background-color: #e9e9e9; */
   background: linear-gradient(90deg, rgba(58,49,213,1) 0%, rgba(86,154,235,1) 46%, rgba(0,212,255,1) 100%);
   padding-bottom: 0.5%;
   padding-left: 1%;
+  height: 8vh;
 }
 
 .topnav a {
@@ -99,4 +100,26 @@ strong {
 }
 #iconUser:hover {
     color: red;
+}
+.container {
+    padding-top: 1%;
+    background: red;
+    width: auto;
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    top: 0;
+    bottom: 0;
+}
+.content {
+    width: 100vh;
+    background: green;
+    display: flex;
+    flex-direction: row;
+}
+.userContact {
+    width: 50vh;
+    background: yellow;
+    display: flex;
+    flex-direction: row;
 }
