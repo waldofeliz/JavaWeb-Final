@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="stylesheet" href="../css//inicio.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascriot" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Icon -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
-<body>
-    <h1> Bienvenido a la pagina de inicio</h1>
+
+<body id="body">
+    <!--Firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtxgdwHs3WorRk5bHONm6IYXhZ-IWo27A",
+            authDomain: "instagramwebfinal.firebaseapp.com",
+            databaseURL: "https://instagramwebfinal.firebaseio.com",
+            projectId: "instagramwebfinal",
+            storageBucket: "instagramwebfinal.appspot.com",
+            messagingSenderId: "864986905548",
+            appId: "1:864986905548:web:8eca90a4bc123e35dd3b69"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        let db = firebase.firestore();
+    </script>
+    <!--END Firebase-->
+    <script type="text/javascript" src="../scripts/inicio.js"></script>
+
+
+    <div class="topnav">
+        <div class="search-container">
+            <img src="../images/usericon.jpg" alt="">
+            <form>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+        </div>
+        <!-- <a class="active" href="#home">Home</a> -->
+        <!-- <a href="#about">About</a> -->
+        <!-- <a href="#contact">Contact</a> -->
+
+    </div>
 </body>
+
 </html>

@@ -15,12 +15,10 @@ $(function () {
 		e.preventDefault();
 	});
 
-
 	//Botones
 	let btnEnviar = document.getElementById('btnEnviar')
 	let btnRegistrar = document.getElementById('btnRegistrar')
 	let btnLogin = document.getElementById('btnLogin')
-
 
 	//Eventos boton
 	btnEnviar.onclick = () => {
@@ -169,7 +167,10 @@ loginUsuario = () => {
 
 	firebase.auth().signInWithEmailAndPassword(email, password)
 	.then(response => {
-		alert('Sesion iniciada')
+		//alert('Sesion iniciada')
+		let usuario = firebase.auth().currentUser;
+		console.log('Usuario login',JSON.stringify(usuario))
+		localStorage.setItem("usuarioSesion",JSON.stringify(usuario))
 		window.location.href = './inicio.html'
 		return false
 	})
