@@ -12,6 +12,8 @@ body {
   padding-bottom: 0.5%;
   padding-left: 1%;
   height: 8vh;
+  position: fixed;
+  width: 100%;
 }
 
 .topnav a {
@@ -102,9 +104,10 @@ strong {
     color: red;
 }
 .container {
-    padding-top: 1%;
+    padding-top: 5%;
+    padding-bottom: 1%;
     width: auto;
-    height: 90vh;
+    height: auto;
     display: flex;
     flex-direction: row;
     top: 0;
