@@ -80,7 +80,23 @@ body {
   }
 }
 img {
-    /* width: 10%; */
-    height: 10%;
-    border-radius: 10em;
+    padding-top: 1%;
+    padding-right: 2%;
+    width: 80px;
+    height: 90px;
+    /* border-radius: 20%; */
+}
+strong {
+    font-size: 9mm;
+    color: white;
+    padding-right: 10px;
+}
+#iconUser {
+    position: absolute;
+    padding-right: 1%;
+    /* top: 80px; */
+    right: 0;
+}
+#iconUser:hover {
+    color: red;
 }
