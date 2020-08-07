@@ -11,8 +11,6 @@ $(function() {
         }
     }
 
-
-
 /* Optional: Add active class to the current button (highlight it) */
 var container = document.getElementById("btnContainer");
 console.log('Container',container)
@@ -25,6 +23,7 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
+rowImagenes()
 
 });
 
@@ -38,7 +37,14 @@ var i;
 // List View
 function listView() {
   for (i = 0; i < elements.length; i++) {
+      console.log('Elements: ',elements[i].getElementsByTagName('img'))
     elements[i].style.width = "100%";
+    elements[i].style.display = "flex";
+    elements[i].style.flexDirection = "column";
+    elements[i].style.justifyContent = "center";
+    elements[i].style.alignItems = "center";
+    elements[i].getElementsByTagName('img')[0].style.width = "400px";
+    elements[i].getElementsByTagName('img')[0].style.height = "300px";
   }
 }
 
@@ -47,4 +53,44 @@ function gridView() {
   for (i = 0; i < elements.length; i++) {
     elements[i].style.width = "50%";
   }
+}
+
+rowImagenes = () => {
+    let lista = [
+        {
+            id : '1',
+            titulo : 'Columna',
+            descripcion : 'Descripcion prueba',
+            imagen : 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
+        },
+        {
+            id : '2',
+            titulo : 'Columna',
+            descripcion : 'Descripcion prueba',
+            imagen : 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
+        },
+        {
+            id : '3',
+            titulo : 'Columna',
+            descripcion : 'Descripcion prueba',
+            imagen : 'https://vignette.wikia.nocookie.net/infotic/images/d/d9/Usuarios.png/revision/latest?cb=20170827062729&path-prefix=es'
+        },
+        {
+            id : '4',
+            titulo : 'Columna',
+            descripcion : 'Esta imagen esta probada',
+            imagen : 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
+        }
+    ]
+    let rowImagenes = document.getElementById('rowImagenes')
+    rowImagenes.innerHTML = ""
+    lista.map(item => {
+        console.log('ValorLista: ',item)
+        rowImagenes.innerHTML += ` 
+        <div class="column" style="background-color:#aaa;">
+            <img src=${item.imagen} class="imagenPublica">
+            <h2>${item.titulo}</h2>
+            <p>${item.descripcion}</p>
+        </div>`
+    })
 }
