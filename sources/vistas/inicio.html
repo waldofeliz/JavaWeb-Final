@@ -11,7 +11,7 @@
     <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
     <!-- Icon -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body id="body">
@@ -53,9 +53,9 @@
                     <i class="fa fa-search"></i>
                 </button>
             </form>
-            <a href="#" id="iconUser">
+            <a href="#" id="iconUser" onclick="salir()">
                 Salir
-                <i class="fa fa-sign-out-alt"></i>
+                <i class="fa fa-sign-out"></i>
             </a>
         </div>
     </div>
@@ -79,13 +79,25 @@
             </div>
         </div>
         <div class="userContact">
-            <div class="divUser">
-                Usuario
+            <div class="card">
+                    <h2 style="text-align:center">User Profile Card</h2>
+                    <img src="../images/usericon2.jpeg" class="imgPerfil">
+                    <h1>John Doe</h1>
+                    <p class="title">CEO & Founder, Example</p>
+                    <p>Harvard University</p>
+                    <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-dribbble contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-twitter contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-linkedin contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-facebook contacto-a"></i></a>
+                    </div>
+                    <p><button class="btnEditarPerfil">Editar Perfil</button></p>
             </div>
-            <div class="divContact">
+            <!-- <div class="divContact">
                 Contactos
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
+
 </html>

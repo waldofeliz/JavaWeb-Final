@@ -4,6 +4,8 @@ $(function () {
     let body = document.getElementById('body')
 
     body.onload = () => {
+
+        //Cargar la pagina     
         let current = JSON.parse(localStorage.getItem("usuarioSesion"))
         console.log('Usuario', current)
         if (current === null) {
@@ -12,12 +14,12 @@ $(function () {
     }
 
     /* Optional: Add active class to the current button (highlight it) */
-    var container = document.getElementById("btnContainer");
+    let container = document.getElementById("btnContainer");
     console.log('Container', container)
-    var btns = container.getElementsByClassName("btn");
-    for (var i = 0; i < btns.length; i++) {
+    let btns = container.getElementsByClassName("btn");
+    for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
+            let current = document.getElementsByClassName("active");
             current[0].className = current[0].className.replace(" active", "");
             this.className += " active";
         });
@@ -29,10 +31,10 @@ $(function () {
 
 
 // Get the elements with class="column"
-var elements = document.getElementsByClassName("column");
+let elements = document.getElementsByClassName("column");
 
 // Declare a loop variable
-var i;
+let i;
 
 // List View
 function listView() {
@@ -95,4 +97,14 @@ rowImagenes = () => {
             <p>${item.descripcion}</p>
         </div>`
     })
+}
+
+salir = () => {
+    let resultado = confirm('Desea salir de la sesión?')
+
+    if(resultado) {
+        localStorage.removeItem("usuarioSesion")
+        window.location.href = './login.html'
+    }
+
 }
