@@ -9,7 +9,7 @@ body {
 .topnav {
   overflow: hidden;
   background: linear-gradient(90deg, rgba(58,49,213,1) 0%, rgba(86,154,235,1) 46%, rgba(0,212,255,1) 100%);
-  padding-bottom: 0.5%;
+  /* padding-bottom: 0.5%; */
   padding-left: 1%;
   height: 8vh;
   position: fixed;
@@ -103,7 +103,10 @@ strong {
 #iconUser:hover {
     color: red;
 }
-.container {
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding-top: 5%;
     padding-bottom: 1%;
     width: auto;
@@ -114,11 +117,11 @@ strong {
     bottom: 0;
 }
 .content {
-    width: 100vh;
+    width: 120vh;
     background: green;
 }
 .userContact {
-    width: 50vh;
+    width: 60vh;
     background: yellow;
     display: flex;
     flex-direction: column;
