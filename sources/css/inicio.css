@@ -97,6 +97,8 @@ strong {
 #iconUser {
     position: absolute;
     padding-right: 1%;
+    font-size: 20px;
+    /* color: red; */
     /* top: 80px; */
     right: 0;
 }
