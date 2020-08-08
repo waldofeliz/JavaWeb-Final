@@ -121,7 +121,7 @@ strong {
     width: 50vh;
     background: yellow;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 .btnss {
     width: 100%;
@@ -170,4 +170,14 @@ strong {
       width: 200px;
       height: 200px;
       
+  }
+  .divUser {
+    margin: 1% 1% 1% 1%;
+    background: blue;
+    height: 300px;
+  }
+  .divContact {
+    margin: 1% 1% 1% 1%;
+    background: orange;
+    height: 300px;
   }
