@@ -43,7 +43,7 @@ function listView() {
         elements[i].style.flexDirection = "column";
         elements[i].style.justifyContent = "center";
         elements[i].style.alignItems = "center";
-        elements[i].getElementsByTagName('img')[0].style.width = "400px";
+        elements[i].getElementsByTagName('img')[0].style.width = "300px";
         elements[i].getElementsByTagName('img')[0].style.height = "300px";
     }
 }
@@ -52,7 +52,7 @@ function listView() {
 function gridView() {
     for (i = 0; i < elements.length; i++) {
         elements[i].style.width = "50%";
-        elements[i].getElementsByTagName('img')[0].style.width = "300px";
+        elements[i].getElementsByTagName('img')[0].style.width = "250px";
         elements[i].getElementsByTagName('img')[0].style.height = "250px";
     }
 }
