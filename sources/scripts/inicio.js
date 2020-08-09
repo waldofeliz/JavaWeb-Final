@@ -3,19 +3,23 @@ $(function () {
     //Componentes
     let body = document.getElementById('body')
 
-    body.onload = () => {
+    body.onload = async () => {
 
         //Cargar la pagina     
         let current = JSON.parse(localStorage.getItem("usuarioSesion"))
-        console.log('Usuario', current)
+        // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'
         }
+
+        //Cargar perfil usuario
+        await cargarPerfil(current)
+
     }
 
     /* Optional: Add active class to the current button (highlight it) */
     let container = document.getElementById("btnContainer");
-    console.log('Container', container)
+    // console.log('Container', container)
     let btns = container.getElementsByClassName("btn");
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
@@ -89,7 +93,7 @@ rowImagenes = () => {
     let rowImagenes = document.getElementById('rowImagenes')
     rowImagenes.innerHTML = ""
     lista.map(item => {
-        console.log('ValorLista: ', item)
+        // console.log('ValorLista: ', item)
         rowImagenes.innerHTML += ` 
         <div class="column" style="background-color:#aaa;">
             <img src=${item.imagen} class="imagenPublica">
@@ -106,5 +110,22 @@ salir = () => {
         localStorage.removeItem("usuarioSesion")
         window.location.href = './login.html'
     }
+
+}
+
+cargarPerfil = async (current) => {
+    console.log('Current User: ',current)
+    console.log('Current User Uid: ',current.uid.toString())
+    let usuarioId = current.uid.toString()
+    let txtusername = document.getElementById('txtusername')
+    let txtemail = document.getElementById('txtemail')
+
+    db.collection("users").where("uid","==",usuarioId).get().then(function(response){
+            response.forEach((res) => {
+                console.log('Usuario Result: ',res.data().username)
+                txtusername.innerHTML = res.data().username
+                txtemail.innerHTML = res.data().email
+            })
+    })
 
 }
