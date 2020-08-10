@@ -138,7 +138,8 @@ guardar = (user) => {
 	db.collection('users').add({
 		username: user.username,
 		email: user.email,
-		uid: user.uid
+		uid: user.uid,
+		photo : ''
 	})
 		.then(us => {
 			console.log('us: ', us)

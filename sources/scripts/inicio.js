@@ -2,6 +2,7 @@ $(function () {
 
     //Componentes
     let body = document.getElementById('body')
+    const btnPerfil = document.getElementById('btnPerfil')
 
     body.onload = async () => {
 
@@ -27,6 +28,10 @@ $(function () {
             current[0].className = current[0].className.replace(" active", "");
             this.className += " active";
         });
+    }
+
+    btnPerfil.onclick = () => {
+        window.location.href = './perfil.html'
     }
 
     rowImagenes()
@@ -110,7 +115,6 @@ salir = () => {
         localStorage.removeItem("usuarioSesion")
         window.location.href = './login.html'
     }
-
 }
 
 cargarPerfil = async (current) => {
