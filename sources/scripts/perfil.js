@@ -1,13 +1,15 @@
 $(function () {
 
     //Componentes
-    let body = document.getElementById('body')
+    const body = document.getElementById('body')
     const btnPerfil = document.getElementById('btnPerfil')
+    const btnImgPerfil = document.getElementById('btnImgPerfil')
+    let current
 
     body.onload = async () => {
 
         //Cargar la pagina     
-        let current = JSON.parse(localStorage.getItem("usuarioSesion"))
+        current = JSON.parse(localStorage.getItem("usuarioSesion"))
         // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'
@@ -53,5 +55,34 @@ cargarPerfil = async (current) => {
                 imgPerfil.src = res.data().photo
             })
     })
+}
 
+uploadImagePerfil = (current) => {
+    console.log('current foto: ',current)
+    //Obteniendo las referencias del proyecto
+    const ref = firebase.storage().ref()
+    const file = document.querySelector('#btnImgPerfil').files[0]
+    const name = current.uid.toString() + new Date() +'-' +file.name
+    if(file == null){
+        alert('Debe selecionar una imagen')
+    }else {
+        const metadata = {
+            contentType : file.type
+        }
+
+        const task = ref.child(name).put(file, metadata)
+
+        task.then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+            console.log(url)
+            alert('Imagen subida')
+            imagen.src = url
+        })
+
+    }
+    console.log(ref)
+}
+
+recargar = () => {
+    location.reload()
 }
