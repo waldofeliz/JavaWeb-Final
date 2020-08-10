@@ -86,13 +86,6 @@ body {
     border: 1px solid #ccc;  
   }
 }
-img {
-    padding-top: 1%;
-    padding-right: 2%;
-    width: 80px;
-    height: 90px;
-    /* border-radius: 20%; */
-}
 strong {
     font-size: 9mm;
     color: white;

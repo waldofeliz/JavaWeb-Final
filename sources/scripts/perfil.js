@@ -40,13 +40,17 @@ cargarPerfil = async (current) => {
     console.log('Current User Uid: ',current.uid.toString())
     let usuarioId = current.uid.toString()
     let txtusername = document.getElementById('txtusername')
-    let txtemail = document.getElementById('txtemail')
+    let pComentario = document.getElementById('pComentario')
+    // let txtemail = document.getElementById('txtemail')
+    let imgPerfil = document.getElementById('imgPerfil')
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
             response.forEach((res) => {
                 console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
-                txtemail.innerHTML = res.data().email
+                pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}<`
+                // txtemail.innerHTML = res.data().email
+                imgPerfil.src = res.data().photo
             })
     })
 

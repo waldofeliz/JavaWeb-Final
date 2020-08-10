@@ -139,7 +139,8 @@ guardar = (user) => {
 		username: user.username,
 		email: user.email,
 		uid: user.uid,
-		photo : ''
+		photo : '',
+		comentario: ''
 	})
 		.then(us => {
 			console.log('us: ', us)
