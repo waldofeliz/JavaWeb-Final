@@ -4,6 +4,7 @@ $(function () {
     const body = document.getElementById('body')
     const btnCancelar = document.getElementById('btnCancelar')
     const btnGuardar = document.getElementById('btnGuardar')
+    const btnSubir = document.getElementById('btnSubir')
     let current
 
     body.onload = async () => {
@@ -26,6 +27,10 @@ $(function () {
 
     btnGuardar.onclick = () => {
          modificarPerfil(current)
+    }
+
+    btnSubir.onclick = () => {
+        subirFoto(current)
     }
 
 
@@ -57,14 +62,43 @@ cargarPerfil = async (current) => {
             response.forEach((res) => {
                 console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
-                pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}<`
+                pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}`
                 // txtemail.innerHTML = res.data().email
                 imgPerfil.src = res.data().photo
             })
     })
 }
 
-uploadImagePerfil = async (current) => {
+recargar = () => {
+    location.reload()
+}
+
+limpiarCampos = () => {
+    let txtEmail = document.getElementById('txtEmail').value = ''
+    let txtUsuario = document.getElementById('txtUsuario').value = ''
+    let txtComentario = document.getElementById('txtComentario').value = ''
+    let upFoto = document.getElementById('upFoto').value = ''
+}
+
+modificarPerfil = async (current) => {
+    let usuarioId = current.uid.toString()
+    let txtUsuario = document.getElementById('txtUsuario').value
+    let txtComentario = document.getElementById('txtComentario').value
+   
+    db.collection("users").where("uid","==",usuarioId).get().then(function(response){
+        response.forEach((res) => {
+            let estatus = db.collection('users').doc(res.id).update({
+                username : txtUsuario,
+                comentario : txtComentario
+            })
+        })
+    }) 
+    setTimeout(() => {
+            recargar()
+    }, 3000);
+}
+
+subirFoto = (current) => {
     //Obteniendo las referencias del proyecto
     let usuarioId = current.uid.toString()
     const ref = firebase.storage().ref()
@@ -83,43 +117,19 @@ uploadImagePerfil = async (current) => {
         task.then(snapshot => snapshot.ref.getDownloadURL())
         .then(url => {
             console.log('URL: ', url)
-            return url
+
+            db.collection("users").where("uid","==",usuarioId).get().then(function(response){
+                response.forEach((res) => {
+                    db.collection('users').doc(res.id).update({
+                        photo : url
+                    })
+                })
+            }) 
+            
         })
-        return 'Not found'
     }
     console.log(ref)
-}
-
-recargar = () => {
-    location.reload()
-}
-
-limpiarCampos = () => {
-    let txtEmail = document.getElementById('txtEmail').value = ''
-    let txtUsuario = document.getElementById('txtUsuario').value = ''
-    let txtComentario = document.getElementById('txtComentario').value = ''
-    let upFoto = document.getElementById('upFoto').value = ''
-}
-
-modificarPerfil = async (current) => {
-    let usuarioId = current.uid.toString()
-    let txtUsuario = document.getElementById('txtUsuario').value
-    let txtComentario = document.getElementById('txtComentario').value
-
-    //Subir foto
-    let urlImagen = await uploadImagePerfil(current)
-
-    console.log('Imagen: ', urlImagen)
-   
-    db.collection("users").where("uid","==",usuarioId).get().then(function(response){
-        response.forEach((res) => {
-            db.collection('users').doc(res.id).update({
-                username : txtUsuario,
-                comentario : txtComentario,
-                photo : urlImagen
-            })
-        })
-    }) 
-
-
+    setTimeout(() => {
+        recargar()
+}, 3000);
 }
