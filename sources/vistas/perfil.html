@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
     <link rel="stylesheet" href="../css//perfil.css">
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script type="text/javascriot" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- Icon -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -80,7 +80,7 @@
     
                     <h1 class="profile-user-name" id="txtusername">janedoe_</h1>
     
-                    <button class="btn profile-edit-btn">Editar Perfil</button>
+                    <button class="btn profile-edit-btn" data-toggle="modal" data-target="#myModal">Editar Perfil</button>
     
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
     
@@ -348,6 +348,52 @@
         <!-- End of container -->
     
     </main>
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Editar Perfil</h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Selecionar foto perfil</label>
+                  <input type="file" class="form-control-file" id="upFoto">
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" readonly class="form-control" id="txtEmail" placeholder="prueba@gmail.com">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Nombre Usuario</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="txtUsuario" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Comentario</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="txtComentario" >
+                    </div>
+                  </div>
+                  
+              </form>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnGuardar">Guardar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 </body>
 
 </html>
