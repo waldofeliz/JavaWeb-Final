@@ -124,13 +124,18 @@ cargarPerfil = async (current) => {
     let txtusername = document.getElementById('txtusername')
     let txtemail = document.getElementById('txtemail')
     let imgPerfil = document.getElementById('imgPerfil')
+    let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg'
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
             response.forEach((res) => {
                 console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
-                txtemail.innerHTML = res.data().email,
-                imgPerfil.src = res.data().photo
+                txtemail.innerHTML = res.data().email
+                if(res.data().photo == ''){
+                    imgPerfil.src = imagenLocal
+                }else {
+                    imgPerfil.src = res.data().photo
+                }
             })
     })
 
