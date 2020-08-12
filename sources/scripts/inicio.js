@@ -63,8 +63,9 @@ function listView() {
 function gridView() {
     for (i = 0; i < elements.length; i++) {
         elements[i].style.width = "50%";
-        elements[i].getElementsByTagName('img')[0].style.width = "250px";
-        elements[i].getElementsByTagName('img')[0].style.height = "250px";
+        elements[i].getElementsByTagName('img')[0].style.width = "150px";
+        elements[i].getElementsByTagName('img')[0].style.height = "200px";
+        elements[i].style.width = "24rem";
     }
 }
 
@@ -100,11 +101,13 @@ rowImagenes = () => {
     lista.map(item => {
         // console.log('ValorLista: ', item)
         rowImagenes.innerHTML += ` 
-        <div class="column" style="background-color:#aaa;">
-            <img src=${item.imagen} class="imagenPublica">
-            <h2>${item.titulo}</h2>
-            <p>${item.descripcion}</p>
-        </div>`
+        <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
+            <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
+            <div class="card-body">
+                <p class="card-text">${item.descripcion}</p>
+            </div>
+        </div>
+        `
     })
 }
 
