@@ -163,7 +163,7 @@ restablecerPassword = () => {
 		})
 }
 
-loginUsuario = () => {
+loginUsuario = async () => {
 	let email = document.getElementById('txtEmail').value
 	let password = document.getElementById('txtpassword').value
 
@@ -171,6 +171,10 @@ loginUsuario = () => {
 	.then(response => {
 		//alert('Sesion iniciada')
 		let usuario = firebase.auth().currentUser;
+
+		//Cargar perfil
+		cargarPerfil(usuario)
+
 		console.log('Usuario login',JSON.stringify(usuario))
 		localStorage.setItem("usuarioSesion",JSON.stringify(usuario))
 		window.location.href = './inicio.html'
@@ -182,4 +186,20 @@ loginUsuario = () => {
 		return false
 	  });
 	  return false
+}
+
+cargarPerfil = async (current) => {
+	let usuarioId = current.uid.toString()
+
+    db.collection("users").where("uid","==",usuarioId).get().then(function(response){
+            response.forEach((res) => {
+				console.log('Usuario Result: ',res.data().username)
+				let usuarioSesion = {
+					username : res.data().username,
+					photo : res.data().photo
+				}
+				localStorage.setItem("usuarioLogin",JSON.stringify(usuarioSesion))
+				console.log('Usuario Sesion: ',JSON.stringify(usuarioSesion))
+            })
+    })
 }

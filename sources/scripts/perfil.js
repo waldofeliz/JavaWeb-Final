@@ -7,11 +7,13 @@ $(function () {
     const btnSubir = document.getElementById('btnSubir')
     const btnPostear = document.getElementById('btnPostear')
     let current
+    let usuarioSesion 
 
     body.onload = async () => {
 
         //Cargar la pagina     
         current = JSON.parse(localStorage.getItem("usuarioSesion"))
+        usuarioSesion = JSON.parse(localStorage.getItem("usuarioLogin"))
         // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'

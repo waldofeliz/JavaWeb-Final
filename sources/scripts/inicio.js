@@ -8,6 +8,8 @@ $(function () {
 
         //Cargar la pagina     
         let current = JSON.parse(localStorage.getItem("usuarioSesion"))
+        let usuarioSesion = JSON.parse(localStorage.getItem("usuarioLogin"))
+        console.log('Usuario Sesion: ',usuarioSesion)
         // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'
@@ -96,15 +98,24 @@ rowImagenes = () => {
             imagen: 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
         }
     ]
+
     let rowImagenes = document.getElementById('rowImagenes')
+    let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg'
     rowImagenes.innerHTML = ""
     lista.map(item => {
         // console.log('ValorLista: ', item)
         rowImagenes.innerHTML += ` 
         <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
-            <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
+            <div class="card-header" style="display:flex; flex-direction: row;
+            justify-content: center; align-items: center; text-align: left;">
+                <img src = ${imagenLocal} class="img-circle" style="width: 3rem; height: 3rem;">
+                <p>Titulo</p>
+            </div>
             <div class="card-body">
-                <p class="card-text">${item.descripcion}</p>
+            <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
+            </div>
+            <div class="card-footer">
+            <p class="card-text">${item.descripcion}</p>
             </div>
         </div>
         `
