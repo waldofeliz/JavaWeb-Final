@@ -74,6 +74,8 @@ cargarPerfil = async (current) => {
     let imgPerfil = document.getElementById('imgPerfil')
     let imgPreFoto = document.getElementById('imgPreFoto')
     let btnEliminar = document.getElementById('btnEliminar')
+    let txtUsuario = document.getElementById('txtUsuario')
+    let txtComentario = document.getElementById('txtComentario')
     let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg' 
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
@@ -81,6 +83,8 @@ cargarPerfil = async (current) => {
                 console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
                 pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}`
+                txtUsuario.value = res.data().username
+                txtComentario.value = res.data().comentario
                 if(res.data().photo == ''){
                     imgPerfil.src = imagenLocal
                     
