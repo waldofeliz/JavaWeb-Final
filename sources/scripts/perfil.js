@@ -17,7 +17,6 @@ $(function () {
         //Cargar la pagina     
         current = JSON.parse(localStorage.getItem("usuarioSesion"))
         usuarioSesion = JSON.parse(localStorage.getItem("usuarioLogin"))
-        // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'
         }
@@ -66,8 +65,6 @@ irInicio = () => {
 }
 
 cargarPerfil = async (current) => {
-    console.log('Current User: ',current)
-    console.log('Current User Uid: ',current.uid.toString())
     let usuarioId = current.uid.toString()
     let txtusername = document.getElementById('txtusername')
     let pComentario = document.getElementById('pComentario')
@@ -80,7 +77,6 @@ cargarPerfil = async (current) => {
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
             response.forEach((res) => {
-                console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
                 pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}`
                 txtUsuario.value = res.data().username
@@ -213,19 +209,17 @@ guardar = (user) => {
 }
 
 cargarPostUsuario = async (current) => {
-    console.log('Current User Uid: ',current.uid.toString())
     let usuarioId = current.uid.toString()
     let pGallery = document.getElementById('gallery')
 
     db.collection("post").where("uid","==",usuarioId).get().then(function(response){
         pGallery.innerHTML = ''
             response.forEach((res) => {
-                console.log('Usuario Result: ', res)
                 pGallery.innerHTML += ` <div class="gallery" id="gallery">
     
                 <div class="gallery-item" tabindex="0">
     
-                    <img src="${res.data().photo}" class="gallery-image" alt="">
+                    <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
     
                     <div class="gallery-item-info">
     
