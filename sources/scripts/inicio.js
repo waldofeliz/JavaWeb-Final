@@ -165,6 +165,6 @@ cargarContactos = (current) => {
 
 irContacto = (usuarioId) => {
     console.log('this', usuarioId)
-    localStorage.setItem("usuarioConsulta",JSON.stringify(usuarioId))
+    localStorage.setItem("usuarioContacto",JSON.stringify(usuarioId))
     window.location.href = './perfil2.html'
 }
