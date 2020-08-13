@@ -7,6 +7,7 @@ $(function () {
     const btnSubir = document.getElementById('btnSubir')
     const btnPostear = document.getElementById('btnPostear')
     const btnEliminar = document.getElementById('btnEliminar')
+    const imgPost = document.getElementById('imgPost')
     let current
     let usuarioSesion 
 
@@ -47,8 +48,6 @@ $(function () {
     btnEliminar.onclick = () => {
         eliminarFotoPerfil(current)
     }
-
-
 });
 
 salir = () => {
@@ -215,21 +214,22 @@ cargarPostUsuario = async (current) => {
     db.collection("post").where("uid","==",usuarioId).get().then(function(response){
         pGallery.innerHTML = ''
             response.forEach((res) => {
-                pGallery.innerHTML += ` <div class="gallery" id="gallery">
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
+                pGallery.innerHTML += ` 
+                <div class="gallery" id="gallery">    
+                    <div class="gallery-item" tabindex="0">
+        
+                        <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
+        
+                        <div class="gallery-item-info">
+        
+                            <ul>
+                                <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+                                <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                            </ul>
+        
+                        </div>
+        
                     </div>
-    
                 </div>`
             })
     })
