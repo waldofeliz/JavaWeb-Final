@@ -177,11 +177,14 @@ strong {
       height: 200px;
       
   }
-  /* .divContact {
+  .divContact {
     margin: 1% 1% 1% 1%;
     background: orange;
     height: 300px;
-  } */
+  }
+  .divPerfil {
+    /* margin: 1%; */
+  }
 
 
   /* Estilo de usuario */
@@ -233,7 +236,7 @@ strong {
     opacity: 0.7;
   }
   #imgPerfil {
-    width:75%;
-    height: 300px;
+    width:50%;
+    height: 180px;
     border-radius: 100%;
   }

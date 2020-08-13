@@ -9,8 +9,6 @@ $(function () {
         //Cargar la pagina     
         let current = JSON.parse(localStorage.getItem("usuarioSesion"))
         let usuarioSesion = JSON.parse(localStorage.getItem("usuarioLogin"))
-        console.log('Usuario Sesion: ',usuarioSesion)
-        // console.log('Usuario', current)
         if (current === null) {
             window.location.href = './login.html'
         }
@@ -22,7 +20,6 @@ $(function () {
 
     /* Optional: Add active class to the current button (highlight it) */
     let container = document.getElementById("btnContainer");
-    // console.log('Container', container)
     let btns = container.getElementsByClassName("btn");
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function () {
@@ -50,7 +47,6 @@ let i;
 // List View
 function listView() {
     for (i = 0; i < elements.length; i++) {
-        console.log('Elements: ', elements[i].getElementsByTagName('img'))
         elements[i].style.width = "100%";
         elements[i].style.display = "flex";
         elements[i].style.flexDirection = "column";
@@ -84,7 +80,7 @@ rowImagenes = () => {
                         <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
                         <div class="card-header" style="display:flex; flex-direction: row;
                         justify-content: center; align-items: center; text-align: left;">
-                            <img src = "${resUsu.data().photo}" class="img-circle" style="width: 3rem; height: 3rem;">
+                            <img id="imgPost" src= "${resUsu.data().photo}" class="img-circle" style="width: 3rem; height: 3rem;" alt="${resUsu.data().uid}">
                             <p>${resUsu.data().username}</p>
                         </div>
                         <div class="card-body">
@@ -102,10 +98,6 @@ rowImagenes = () => {
                 
             })
     })
-
-
-
-
 }
 
 salir = () => {
@@ -118,8 +110,6 @@ salir = () => {
 }
 
 cargarPerfil = async (current) => {
-    console.log('Current User: ',current)
-    console.log('Current User Uid: ',current.uid.toString())
     let usuarioId = current.uid.toString()
     let txtusername = document.getElementById('txtusername')
     let txtemail = document.getElementById('txtemail')
@@ -128,7 +118,6 @@ cargarPerfil = async (current) => {
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
             response.forEach((res) => {
-                console.log('Usuario Result: ',res.data().username)
                 txtusername.innerHTML = res.data().username
                 txtemail.innerHTML = res.data().email
                 if(res.data().photo == ''){
