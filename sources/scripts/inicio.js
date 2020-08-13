@@ -16,6 +16,8 @@ $(function () {
         //Cargar perfil usuario
         await cargarPerfil(current)
 
+        cargarContactos()
+
     }
 
     /* Optional: Add active class to the current button (highlight it) */
@@ -34,6 +36,11 @@ $(function () {
     }
 
     rowImagenes()
+
+
+
+    
+
 
 });
 
@@ -130,31 +137,31 @@ cargarPerfil = async (current) => {
 
 }
 
-
-cargarPostUsuario = async (current) => {
-    let usuarioId = current.uid.toString()
-    let pGallery = document.getElementById('gallery')
-
-    db.collection("post").where("uid","==",usuarioId).get().then(function(response){
-        pGallery.innerHTML = ''
-            response.forEach((res) => {
-                pGallery.innerHTML += ` 
-                <div class="gallery" id="gallery">    
-                    <div class="gallery-item" tabindex="0">
-        
-                        <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
-        
-                        <div class="gallery-item-info">
-        
-                            <ul>
-                                <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                                <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                            </ul>
-        
-                        </div>
-        
-                    </div>
-                </div>`
-            })
-    })
+cargarContactos = () => {
+    let contactlist = document.getElementById('contact-list')
+    db.collection("users").get().then(function(response){
+        contactlist.innerHTML = ''
+        response.forEach((res) => {
+            contactlist.innerHTML += `
+            <li class="list-group-item">
+            <div class="row w-100">
+                <div class="col-12 col-sm-6 col-md-3 px-0">
+                    <img src="${res.data().photo}"
+                        alt="${res.data().username}" class="rounded-circle mx-auto d-block img-fluid">
+                </div>
+                <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                    <span class="fa fa-envelope fa-2x text-success float-right pulse"
+                        style="font-size:20px;"
+                        title="online now"></span>
+                    <label class="name lead">${res.data().username}</label>
+                    <br>
+                    <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip"
+                        data-original-title="" title=""></span>
+                    <span class="text-muted small text-truncate">${res.data().email}</span>
+                </div>
+            </div>
+        </li>
+            `
+        })
+})
 }
