@@ -6,10 +6,13 @@ $(function () {
     const btnGuardar = document.getElementById('btnGuardar')
     const btnSubir = document.getElementById('btnSubir')
     const btnPostear = document.getElementById('btnPostear')
+    const btnEliminar = document.getElementById('btnEliminar')
     let current
     let usuarioSesion 
 
     body.onload = async () => {
+
+        btnEliminar.style.display = "none"
 
         //Cargar la pagina     
         current = JSON.parse(localStorage.getItem("usuarioSesion"))
@@ -41,6 +44,10 @@ $(function () {
         postearContenido(current)
         await cargarPostUsuario(current)
     }
+    
+    btnEliminar.onclick = () => {
+        eliminarFotoPerfil(current)
+    }
 
 
 });
@@ -65,6 +72,8 @@ cargarPerfil = async (current) => {
     let txtusername = document.getElementById('txtusername')
     let pComentario = document.getElementById('pComentario')
     let imgPerfil = document.getElementById('imgPerfil')
+    let imgPreFoto = document.getElementById('imgPreFoto')
+    let btnEliminar = document.getElementById('btnEliminar')
     let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg' 
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
@@ -74,8 +83,11 @@ cargarPerfil = async (current) => {
                 pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}`
                 if(res.data().photo == ''){
                     imgPerfil.src = imagenLocal
+                    
                 }else {
                 imgPerfil.src = res.data().photo
+                imgPreFoto.src = res.data().photo
+                btnEliminar.style.display = ""
                 }
             })
     })
@@ -223,4 +235,36 @@ cargarPostUsuario = async (current) => {
                 </div>`
             })
     })
+}
+
+eliminarFotoPerfil = (current) => {    
+    let usuarioId = current.uid.toString()
+   // Create a root reference
+   var storageRef = firebase.storage().ref();
+   // Create a reference 
+   var mountainsRef = storageRef.child(`${usuarioId}/Perfil`);
+
+   let btnEliminar = document.getElementById('btnEliminar')
+
+   // Now we get the references of these files
+   mountainsRef.listAll().then(function (result) {
+       result.items.forEach(function (file) {
+          file.delete();
+
+          db.collection("users").where("uid","==",usuarioId).get().then(function(response){
+            response.forEach((res) => {
+                db.collection('users').doc(res.id).update({
+                    photo : ''
+                })
+            })
+        }) 
+
+          setTimeout(() => {
+            btnEliminar.style.display = "none"
+            recargar()
+    }, 3000);
+       });
+   }).catch(function (error) {
+       // Handle any errors
+   });
 }
