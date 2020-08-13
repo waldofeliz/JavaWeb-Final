@@ -7,7 +7,7 @@ $(function () {
     const btnSubir = document.getElementById('btnSubir')
     const btnPostear = document.getElementById('btnPostear')
     const btnEliminar = document.getElementById('btnEliminar')
-    const imgPost = document.getElementById('imgPost')
+    const btnPassword = document.getElementById('btnPassword')
     let current
     let usuarioSesion 
 
@@ -48,6 +48,11 @@ $(function () {
     btnEliminar.onclick = () => {
         eliminarFotoPerfil(current)
     }
+
+    btnPassword.onclick = async () => {
+        await recuperarPassword(current)
+    }
+
 });
 
 salir = () => {
@@ -265,4 +270,27 @@ eliminarFotoPerfil = (current) => {
    }).catch(function (error) {
        // Handle any errors
    });
+}
+
+recuperarPassword = async (current) => {
+
+    let txtPassword = document.getElementById('txtPassword').value
+    let txtRepPassword = document.getElementById('txtRepPassword').value
+    let user = firebase.auth().currentUser;
+
+    if(txtPassword !== txtRepPassword){
+        alert('La Contraseña debe ser la misma')
+    }else if(txtPassword === '') {
+        alert('El campo Nueva Contraseña no puede estar vacio')
+    }
+    else if(txtRepPassword === '') {
+        alert('El campo Repetir Contraseña no puede estar vacio')
+    }
+    else{
+        user.updatePassword(txtPassword).then(function() {
+            alert('Contraseña Actualizada')
+          }).catch(function(error) {
+            // An error happened.
+          });
+    }    
 }

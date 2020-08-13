@@ -67,392 +67,217 @@
     <header class="headerPerfil">
 
         <div class="contenedor">
-    
+
             <div class="profile">
-    
+
                 <div class="profile-image">
-    
+
                     <img class="img-circle" alt="" id="imgPerfil" data-toggle="modal" data-target="#modalFoto">
-    
+
                 </div>
-    
+
                 <div class="profile-user-settings">
-    
+
                     <h1 class="profile-user-name" id="txtusername">janedoe_</h1>
-    
-                    <button class="btn profile-edit-btn" data-toggle="modal" data-target="#myModal">Editar Perfil</button>
-    
-                    <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-    
+
+                    <button class="btn profile-edit-btn" data-toggle="modal" data-target="#myModal">Editar
+                        Perfil</button>
+
+                    <button class="btn profile-settings-btn" aria-label="profile settings" data-toggle="modal"
+                        data-target="#modalPassword"><i class="fas fa-cog" aria-hidden="true"> Cambiar
+                            Contraseña</i></button>
+
                 </div>
-    
+
                 <div class="profile-stats">
-    
+
                     <ul>
                         <li><span class="profile-stat-count">0</span> posts</li>
                         <li><span class="profile-stat-count">0</span> seguidores</li>
                         <li><span class="profile-stat-count">0</span> siguiendo</li>
                     </ul>
-    
+
                 </div>
-    
+
                 <div class="profile-bio">
-    
+
                     <p id="pComentario"><span class="profile-real-name" id="spanUsername">Jane Doe</span> ---</p>
-    
+
                 </div>
-    
+
             </div>
             <!-- End of profile section -->
-    
+
         </div>
         <!-- End of container -->
-    
+
     </header>
-    
+
     <main>
-    
+
         <div class="container">
 
-        <div>
-            <a href="#" style="font-size: 24px;" data-toggle="modal" data-target="#modalPostFoto">
-                <i class="fa fa-plus-circle"></i> Postear Contenido
-            </a>
-            <hr>
-        </div>
-    
+            <div>
+                <a href="#" style="font-size: 24px;" data-toggle="modal" data-target="#modalPostFoto">
+                    <i class="fa fa-plus-circle"></i> Postear Contenido
+                </a>
+                <hr>
+            </div>
+
             <div class="gallery" id="gallery">
-    
-                <!-- <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 94</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 52</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 4</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 41</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div> -->
-    
-                </div>
-    
+
             </div>
             <!-- End of gallery -->
-    
+
             <!-- <div class="loader"></div> -->
-    
+
         </div>
         <!-- End of container -->
-    
+
     </main>
     <!-- Modal Perfil-->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar Perfil</h4>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Perfil</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" readonly class="form-control" id="txtEmail"
+                                    placeholder="prueba@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre Usuario</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="txtUsuario">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Comentario</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="txtComentario">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="btnGuardar">Guardar</button>
+                </div>
+            </div>
+
         </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" readonly class="form-control" id="txtEmail" placeholder="prueba@gmail.com">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Nombre Usuario</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="txtUsuario" >
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">Comentario</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" id="txtComentario" >
-                    </div>
-                  </div>
-                  
-              </form>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnGuardar">Guardar</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
 
-  <!-- End Modal Perfil -->
+    <!-- End Modal Perfil -->
 
-  <!-- Modal Foto-->
-  <div class="modal fade" id="modalFoto" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar Foto Perfil</h4>
+    <!-- Modal Foto-->
+    <div class="modal fade" id="modalFoto" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Foto Perfil</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Selecionar foto perfil</label>
+                            <input type="file" class="form-control-file" id="upFoto">
+                        </div>
+                    </form>
+                    <img id="imgPreFoto" />
+                    <br>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnEliminar">Eliminar
+                        Foto</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCerrar">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="btnSubir">Subir</button>
+                </div>
+            </div>
+
         </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Selecionar foto perfil</label>
-                  <input type="file" class="form-control-file" id="upFoto">
-                </div>                  
-              </form>
-              <img id="imgPreFoto"/>
-              <br>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnEliminar">Eliminar Foto</button>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCerrar">Cancelar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnSubir">Subir</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
 
-  <!-- END Modal Foto -->
-  <!-- Modal PostearFoto-->
-  <div class="modal fade" id="modalPostFoto" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Postear Contenido</h4>
+    <!-- END Modal Foto -->
+    <!-- Modal PostearFoto-->
+    <div class="modal fade" id="modalPostFoto" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Postear Contenido</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Selecionar foto a postear</label>
+                            <input type="file" class="form-control-file" id="upPostFoto">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCerrar">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="btnPostear">Subir</button>
+                </div>
+            </div>
+
         </div>
-        <div class="modal-body">
-            <form>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Selecionar foto a postear</label>
-                  <input type="file" class="form-control-file" id="upPostFoto">
-                </div>                  
-              </form>
-        </div>
-        <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCerrar">Cancelar</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal" id="btnPostear">Subir</button>
-        </div>
-      </div>
-      
     </div>
-  </div>
 
-  <!-- END Modal Foto -->
+    <!-- END Modal Foto -->
 
+    <!-- Modal Perfil-->
+    <div class="modal fade" id="modalPassword" role="dialog">
+        <div class="modal-dialog modal-lg">
 
+            <!-- Modal Password-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Contraseña</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Contraseña Nueva</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="txtPassword">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Repetir Contraseña</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="txtRepPassword">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal" id="btnPassword">Guardar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- End Modal Perfil -->
 
 </body>
 
