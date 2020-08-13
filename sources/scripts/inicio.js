@@ -101,25 +101,58 @@ rowImagenes = () => {
 
     let rowImagenes = document.getElementById('rowImagenes')
     let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg'
-    rowImagenes.innerHTML = ""
-    lista.map(item => {
-        // console.log('ValorLista: ', item)
-        rowImagenes.innerHTML += ` 
-        <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
-            <div class="card-header" style="display:flex; flex-direction: row;
-            justify-content: center; align-items: center; text-align: left;">
-                <img src = ${imagenLocal} class="img-circle" style="width: 3rem; height: 3rem;">
-                <p>Titulo</p>
-            </div>
-            <div class="card-body">
-            <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
-            </div>
-            <div class="card-footer">
-            <p class="card-text">${item.descripcion}</p>
-            </div>
-        </div>
-        `
+    // rowImagenes.innerHTML = ""
+    // lista.map(item => {
+    //     // console.log('ValorLista: ', item)
+    //     rowImagenes.innerHTML += ` 
+    //     <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
+    //         <div class="card-header" style="display:flex; flex-direction: row;
+    //         justify-content: center; align-items: center; text-align: left;">
+    //             <img src = ${imagenLocal} class="img-circle" style="width: 3rem; height: 3rem;">
+    //             <p>Titulo</p>
+    //         </div>
+    //         <div class="card-body">
+    //         <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
+    //         </div>
+    //         <div class="card-footer">
+    //         <p class="card-text">${item.descripcion}</p>
+    //         </div>
+    //     </div>
+    //     `
+    // })
+
+    db.collection("post").get().then(function(response){
+        rowImagenes.innerHTML = ""
+            response.forEach((res) => {
+
+                db.collection("users").where("uid","==",res.data().uid).get().then(function(response){
+                    response.forEach((resUsu) => {
+                        rowImagenes.innerHTML += ` 
+                        <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
+                        <div class="card-header" style="display:flex; flex-direction: row;
+                        justify-content: center; align-items: center; text-align: left;">
+                            <img src = ${resUsu.data().photo} class="img-circle" style="width: 3rem; height: 3rem;">
+                            <p>${resUsu.data().username}</p>
+                        </div>
+                        <div class="card-body">
+                        <img class="card-img-top imagenPublica" src="${res.data().photo}" alt="">
+                        </div>
+                        <div class="card-footer">
+                        <p class="card-text"></p>
+                        </div>
+                    </div>
+                    `
+                    })
+            })
+
+
+                
+            })
     })
+
+
+
+
 }
 
 salir = () => {
@@ -153,4 +186,33 @@ cargarPerfil = async (current) => {
             })
     })
 
+}
+
+
+cargarPostUsuario = async (current) => {
+    let usuarioId = current.uid.toString()
+    let pGallery = document.getElementById('gallery')
+
+    db.collection("post").where("uid","==",usuarioId).get().then(function(response){
+        pGallery.innerHTML = ''
+            response.forEach((res) => {
+                pGallery.innerHTML += ` 
+                <div class="gallery" id="gallery">    
+                    <div class="gallery-item" tabindex="0">
+        
+                        <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
+        
+                        <div class="gallery-item-info">
+        
+                            <ul>
+                                <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+                                <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                            </ul>
+        
+                        </div>
+        
+                    </div>
+                </div>`
+            })
+    })
 }
