@@ -72,54 +72,7 @@ function gridView() {
 }
 
 rowImagenes = () => {
-    let lista = [
-        {
-            id: '1',
-            titulo: 'Columna',
-            descripcion: 'Descripcion prueba',
-            imagen: 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
-        },
-        {
-            id: '2',
-            titulo: 'Columna',
-            descripcion: 'Descripcion prueba',
-            imagen: 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
-        },
-        {
-            id: '3',
-            titulo: 'Columna',
-            descripcion: 'Descripcion prueba',
-            imagen: 'https://vignette.wikia.nocookie.net/infotic/images/d/d9/Usuarios.png/revision/latest?cb=20170827062729&path-prefix=es'
-        },
-        {
-            id: '4',
-            titulo: 'Columna',
-            descripcion: 'Esta imagen esta probada',
-            imagen: 'https://sistemas.com/termino/wp-content/uploads/Usuario-Icono.jpg'
-        }
-    ]
-
     let rowImagenes = document.getElementById('rowImagenes')
-    let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg'
-    // rowImagenes.innerHTML = ""
-    // lista.map(item => {
-    //     // console.log('ValorLista: ', item)
-    //     rowImagenes.innerHTML += ` 
-    //     <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
-    //         <div class="card-header" style="display:flex; flex-direction: row;
-    //         justify-content: center; align-items: center; text-align: left;">
-    //             <img src = ${imagenLocal} class="img-circle" style="width: 3rem; height: 3rem;">
-    //             <p>Titulo</p>
-    //         </div>
-    //         <div class="card-body">
-    //         <img class="card-img-top imagenPublica" src="${item.imagen}" alt="${item.titulo}">
-    //         </div>
-    //         <div class="card-footer">
-    //         <p class="card-text">${item.descripcion}</p>
-    //         </div>
-    //     </div>
-    //     `
-    // })
 
     db.collection("post").get().then(function(response){
         rowImagenes.innerHTML = ""
@@ -131,7 +84,7 @@ rowImagenes = () => {
                         <div class="card column" style="width: 24rem; margin: 1%" id="divCard">
                         <div class="card-header" style="display:flex; flex-direction: row;
                         justify-content: center; align-items: center; text-align: left;">
-                            <img src = ${resUsu.data().photo} class="img-circle" style="width: 3rem; height: 3rem;">
+                            <img src = "${resUsu.data().photo}" class="img-circle" style="width: 3rem; height: 3rem;">
                             <p>${resUsu.data().username}</p>
                         </div>
                         <div class="card-body">
