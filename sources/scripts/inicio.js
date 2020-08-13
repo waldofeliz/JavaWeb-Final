@@ -16,7 +16,7 @@ $(function () {
         //Cargar perfil usuario
         await cargarPerfil(current)
 
-        cargarContactos()
+        cargarContactos(current)
 
     }
 
@@ -36,12 +36,6 @@ $(function () {
     }
 
     rowImagenes()
-
-
-
-    
-
-
 });
 
 
@@ -137,12 +131,14 @@ cargarPerfil = async (current) => {
 
 }
 
-cargarContactos = () => {
+cargarContactos = (current) => {
+    let usuarioId = current.uid.toString()
     let contactlist = document.getElementById('contact-list')
     db.collection("users").get().then(function(response){
         contactlist.innerHTML = ''
         response.forEach((res) => {
-            contactlist.innerHTML += `
+            if(res.data().uid !== usuarioId){
+                contactlist.innerHTML += `
             <li class="list-group-item">
             <div class="row w-100">
                 <div class="col-12 col-sm-6 col-md-3 px-0">
@@ -153,7 +149,7 @@ cargarContactos = () => {
                     <span class="fa fa-envelope fa-2x text-success float-right pulse"
                         style="font-size:20px;"
                         title="online now"></span>
-                    <label class="name lead">${res.data().username}</label>
+                    <label class="name lead"><a href="#" onclick="irContacto('${res.data().uid}')">${res.data().username}</a></label>
                     <br>
                     <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip"
                         data-original-title="" title=""></span>
@@ -162,6 +158,13 @@ cargarContactos = () => {
             </div>
         </li>
             `
+            }
         })
 })
+}
+
+irContacto = (usuarioId) => {
+    console.log('this', usuarioId)
+    localStorage.setItem("usuarioConsulta",JSON.stringify(usuarioId))
+    window.location.href = './perfil2.html'
 }
