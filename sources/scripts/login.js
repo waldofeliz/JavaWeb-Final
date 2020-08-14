@@ -183,6 +183,10 @@ loginUsuario = async () => {
 	.catch(function(error) {
 		var errorCode = error.code;
 		var errorMessage = error.message;
+		alert('No se ha podido iniciar sesión. \nValidar el usuario y password insertado.')
+		email.value = ''
+		password.value = ''
+		recargar()
 		return false
 	  });
 	  return false
@@ -202,4 +206,8 @@ cargarPerfil = async (current) => {
 				console.log('Usuario Sesion: ',JSON.stringify(usuarioSesion))
             })
     })
+}
+
+recargar = () => {
+    location.reload()
 }
