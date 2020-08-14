@@ -118,11 +118,11 @@ strong {
 .content {
     width: 120vh;
     height: 90vh;
-    background: green;
+    /* background: green; */
 }
 .userContact {
     width: 60vh;
-    background: yellow;
+    /* background: yellow; */
     display: flex;
     flex-direction: column;
 }
@@ -179,7 +179,7 @@ strong {
   }
   .divContact {
     margin: 1% 1% 1% 1%;
-    background: orange;
+    /* background: orange; */
     height: 410px;
     overflow: auto;
   }
