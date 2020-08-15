@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red-Social - Inicio</title>
+    <link rel="stylesheet" href="../css//inicio.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascriot" src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Icon -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="body">
+    <!--Firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtxgdwHs3WorRk5bHONm6IYXhZ-IWo27A",
+            authDomain: "instagramwebfinal.firebaseapp.com",
+            databaseURL: "https://instagramwebfinal.firebaseio.com",
+            projectId: "instagramwebfinal",
+            storageBucket: "instagramwebfinal.appspot.com",
+            messagingSenderId: "864986905548",
+            appId: "1:864986905548:web:8eca90a4bc123e35dd3b69"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        let db = firebase.firestore();
+    </script>
+    <!--END Firebase-->
+    <script type="text/javascript" src="../scripts/inicio.js"></script>
+
+
+    <div class="topnav" id="topnav">
+        <div class="search-container">
+            <strong>Red-Social</strong>
+            <!-- <form>
+                <input type="text" placeholder="Search.." name="search" onkeyup="myFunction()">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form> -->
+            <div class="divBotones">
+                <a href="#" style="font-size: 30px;">
+                    <i class="fa fa-home"></i>
+                </a>
+                <a href="#" style="font-size: 30px;" onclick="salir()">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="contenedor">
+        <div class="content">
+            <div>
+                <div id="btnContainer">
+                    <button class="btn active"><i class="fa fa-th-large"></i> </button>
+                </div>
+                <!-- <br> -->
+                <div class="btnss">
+
+                    <div class="row" id="rowImagenes">
+                        <!-- <div class="column" style="background-color:#aaa;">
+                        <h2>Column 1</h2>
+                        <p>Some text..</p>
+                    </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="userContact">
+            <div class="divPerfil">
+                <div class="card">
+                    <h3 style="text-align:center">Perfil</h3>
+                    <img id="imgPerfil" class="img-circle">
+                    <p id="txtusername"></p>
+                    <p class="title" id="txtemail"></p>
+                    <!-- <p>Harvard University</p> -->
+                    <!-- <div style="margin: 24px 0;">
+                        <a href="#"><i class="fa fa-dribbble contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-twitter contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-linkedin contacto-a"></i></a>
+                        <a href="#"><i class="fa fa-facebook contacto-a"></i></a>
+                    </div> -->
+                    <p><button class="btnEditarPerfil btn btn-primary btn-sm" id="btnPerfil">Editar Perfil</button></p>
+                </div>
+            </div>
+            <div class="divContact">
+                <div class="divContactoTitulo">
+                    <h3>Lista Usuarios</h3>
+                </div>
+                <!-- <div class="container"> -->
+                    <!-- contacts card -->
+                    <div class="card card-default" id="card_contacts">
+                        <div id="contacts" class="panel-collapse collapse show" aria-expanded="true" style="">
+                            <ul class="list-group pull-down" id="contact-list">
+                                
+                                <li class="list-group-item">
+                                    <div class="row w-100">
+                                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                            <label class="name lead"><a href="#" onclick="irContacto()"></a></label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <!-- <li class="list-group-item">
+                                    <div class="row w-100">
+                                        <div class="col-12 col-sm-6 col-md-3 px-0">
+                                            <img src="http://demos.themes.guide/bodeo/assets/images/users/m105.jpg"
+                                                alt="Seth Frazier" class="img-fluid rounded-circle d-block mx-auto">
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                            <span class="name lead">Seth Frazier</span>
+                                            <br>
+                                            <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip"
+                                                title="" data-original-title="7396 E North St"></span>
+                                            <span class="text-muted">7396 E North St</span>
+                                            <br>
+                                            <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title=""
+                                                data-original-title="(560) 180-4143"></span>
+                                            <span class="text-muted small">(560) 180-4143</span>
+                                            <br>
+                                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" title=""
+                                                data-original-title="seth.frazier@example.com"></span>
+                                            <span class="text-muted small text-truncate">seth.frazier@example.com</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row w-100">
+                                        <div class="col-12 col-sm-6 col-md-3 px-0">
+                                            <img src="http://demos.themes.guide/bodeo/assets/images/users/w102.jpg"
+                                                alt="Rosemary Porter" class="img-fluid rounded-circle d-block mx-auto">
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                            <span class="fa fa-envelope fa-lg text-danger float-right"
+                                                title="left you a message"></span>
+                                            <span class="name lead">Rosemary Porter</span>
+                                            <br> <span class="fa fa-map-marker fa-fw text-muted" data-toggle="tooltip"
+                                                title="" data-original-title="5267 Cackson St"></span>
+                                            <span class="text-muted">5267 Cackson St</span>
+                                            <br>
+                                            <span class="fa fa-phone fa-fw text-muted" data-toggle="tooltip" title=""
+                                                data-original-title="(497) 160-9776"></span>
+                                            <span class="text-muted small">(497) 160-9776</span>
+                                            <br>
+                                            <span class="fa fa-envelope fa-fw text-muted" data-toggle="tooltip" title=""
+                                                data-original-title="rosemary.porter@example.com"></span>
+                                            <span
+                                                class="text-muted small text-truncate">rosemary.porter@example.com</span>
+                                            <br>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="row w-100">
+                                        <div class="col-12 col-sm-6 col-md-3 px-0">
+                                            <img src="http://demos.themes.guide/bodeo/assets/images/users/w104.jpg"
+                                                alt="Debbie Schmidt" class="img-fluid rounded-circle d-block mx-auto">
+                                        </div>
+                                        <div class="col-12 col-sm-6 col-md-9 text-center text-sm-left">
+                                            <label class="name lead">Debbie Schmidt</label>
+                                            <br>
+
+                                            <span class="fa fa-fw fa-map-marker fa-fw text-muted" data-toggle="tooltip"
+                                                title="" data-original-title="3903 W Alexander Rd"></span>
+                                            <span class="text-muted">3903 W Alexander Rd</span>
+                                            <br>
+
+                                            <span class="fa fa-fw fa-phone fa-fw text-muted" data-toggle="tooltip"
+                                                title="" data-original-title="(867) 322-1852"></span>
+                                            <span class="text-muted small">(867) 322-1852</span>
+                                            <br>
+
+                                            <span class="fa fa-fw fa-envelope fa-fw text-muted" data-toggle="tooltip"
+                                                title="" data-original-title="debbie.schmidt@example.com"></span>
+                                            <span
+                                                class="text-muted small text-truncate">debbie.schmidt@example.com</span>
+
+                                        </div>
+                                    </div>
+                                </li> -->
+
+                            </ul>
+                            <!--/contacts list-->
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

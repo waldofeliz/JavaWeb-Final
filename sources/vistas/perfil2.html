@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../css//perfil.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Icon -->
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="body">
+    <!--Firebase-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAtxgdwHs3WorRk5bHONm6IYXhZ-IWo27A",
+            authDomain: "instagramwebfinal.firebaseapp.com",
+            databaseURL: "https://instagramwebfinal.firebaseio.com",
+            projectId: "instagramwebfinal",
+            storageBucket: "instagramwebfinal.appspot.com",
+            messagingSenderId: "864986905548",
+            appId: "1:864986905548:web:8eca90a4bc123e35dd3b69"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        let db = firebase.firestore();
+    </script>
+    <!--END Firebase-->
+    <script type="text/javascript" src="../scripts/perfil2.js"></script>
+
+
+    <div class="topnav" id="topnav">
+        <div class="search-container">
+            <strong>Red-Social</strong>
+            <!-- <form>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </form> -->
+            <div class="divBotones">
+                <a href="#" style="font-size: 30px;" onclick="irInicio()">
+                    <i class="fa fa-home"></i>
+                </a>
+                <a href="#" style="font-size: 30px;" onclick="salir()">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <header class="headerPerfil">
+
+        <div class="contenedor">
+
+            <div class="profile">
+
+                <div class="profile-image">
+
+                    <img class="img-circle" alt="" id="imgPerfil">
+
+                </div>
+
+                <div class="profile-user-settings">
+
+                    <h1 class="profile-user-name" id="txtusername"></h1>
+
+                </div>
+
+                <div class="profile-stats">
+
+                    <ul>
+                        <li><span class="profile-stat-count">0</span> posts</li>
+                        <li><span class="profile-stat-count">0</span> seguidores</li>
+                        <li><span class="profile-stat-count">0</span> siguiendo</li>
+                    </ul>
+
+                </div>
+
+                <div class="profile-bio">
+
+                    <p id="pComentario"><span class="profile-real-name" id="spanUsername"></span></p>
+
+                </div>
+
+            </div>
+            <!-- End of profile section -->
+
+        </div>
+        <!-- End of container -->
+
+    </header>
+
+    <main>
+
+        <div class="container">
+
+            <div>
+                <hr>
+            </div>
+
+            <div class="gallery" id="gallery">
+
+            </div>
+            <!-- End of gallery -->
+
+            <!-- <div class="loader"></div> -->
+
+        </div>
+        <!-- End of container -->
+
+    </main>
+
+</body>
+
+</html>
