@@ -58,16 +58,6 @@ function listView() {
     }
 }
 
-// Grid View
-function gridView() {
-    for (i = 0; i < elements.length; i++) {
-        elements[i].style.width = "50%";
-        elements[i].getElementsByTagName('img')[0].style.width = "150px";
-        elements[i].getElementsByTagName('img')[0].style.height = "200px";
-        elements[i].style.width = "24rem";
-    }
-}
-
 rowImagenes = () => {
     let rowImagenes = document.getElementById('rowImagenes')
 

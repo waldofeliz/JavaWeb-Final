@@ -164,10 +164,10 @@ restablecerPassword = () => {
 }
 
 loginUsuario = async () => {
-	let email = document.getElementById('txtEmail').value
-	let password = document.getElementById('txtpassword').value
+	let email = document.getElementById('txtEmail')
+	let password = document.getElementById('txtpassword')
 
-	firebase.auth().signInWithEmailAndPassword(email, password)
+	firebase.auth().signInWithEmailAndPassword(email.value, password.value)
 	.then(response => {
 		//alert('Sesion iniciada')
 		let usuario = firebase.auth().currentUser;
@@ -184,9 +184,7 @@ loginUsuario = async () => {
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		alert('No se ha podido iniciar sesión. \nValidar el usuario y password insertado.')
-		email.value = ''
 		password.value = ''
-		recargar()
 		return false
 	  });
 	  return false
@@ -206,8 +204,4 @@ cargarPerfil = async (current) => {
 				console.log('Usuario Sesion: ',JSON.stringify(usuarioSesion))
             })
     })
-}
-
-recargar = () => {
-    location.reload()
 }
