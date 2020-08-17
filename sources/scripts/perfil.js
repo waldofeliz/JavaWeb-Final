@@ -76,7 +76,7 @@ cargarPerfil = async (current) => {
     let imgPreFoto = document.getElementById('imgPreFoto')
     let btnEliminar = document.getElementById('btnEliminar')
     let txtUsuario = document.getElementById('txtUsuario')
-    let txtComentario = document.getElementById('txtComentario')
+    let txtBiografia = document.getElementById('txtBiografia')
     let imagenLocal = window.location.origin + '/sources/images/usericon2.jpeg' 
 
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
@@ -84,7 +84,7 @@ cargarPerfil = async (current) => {
                 txtusername.innerHTML = res.data().username
                 pComentario.innerHTML = `<span class="profile-real-name" id="spanUsername">${res.data().username}</span> ${res.data().comentario}`
                 txtUsuario.value = res.data().username
-                txtComentario.value = res.data().comentario
+                txtBiografia.value = res.data().comentario
                 if(res.data().photo == ''){
                     imgPerfil.src = imagenLocal
                     
@@ -104,20 +104,20 @@ recargar = () => {
 limpiarCampos = () => {
     let txtEmail = document.getElementById('txtEmail').value = ''
     let txtUsuario = document.getElementById('txtUsuario').value = ''
-    let txtComentario = document.getElementById('txtComentario').value = ''
+    let txtBiografia = document.getElementById('txtBiografia').value = ''
     let upFoto = document.getElementById('upFoto').value = ''
 }
 
 modificarPerfil = async (current) => {
     let usuarioId = current.uid.toString()
     let txtUsuario = document.getElementById('txtUsuario').value
-    let txtComentario = document.getElementById('txtComentario').value
+    let txtBiografia = document.getElementById('txtBiografia').value
    
     db.collection("users").where("uid","==",usuarioId).get().then(function(response){
         response.forEach((res) => {
             let estatus = db.collection('users').doc(res.id).update({
                 username : txtUsuario,
-                comentario : txtComentario
+                comentario : txtBiografia
             })
         })
     }) 
@@ -165,6 +165,7 @@ subirFoto = (current) => {
 postearContenido = (current) => {
     //Obteniendo las referencias del proyecto
     let usuarioId = current.uid.toString()
+    let txtComentario = document.getElementById('txtComentario').value
     const ref = firebase.storage().ref()
     const file = document.querySelector('#upPostFoto').files[0]
     const name = new Date() +'-' +file.name
@@ -184,7 +185,8 @@ postearContenido = (current) => {
 
             let usuarioInfo = {
                 uid : usuarioId,
-                url : url
+                url : url,
+                comentario: txtComentario
             }
 
             guardar(usuarioInfo)
@@ -200,7 +202,8 @@ postearContenido = (current) => {
 guardar = (user) => {
 	db.collection('post').add({
 		uid: user.uid,
-		photo : user.url,
+        photo : user.url,
+        comentario: user.comentario
 	})
 		.then(us => {
 			console.log('us: ', us)
