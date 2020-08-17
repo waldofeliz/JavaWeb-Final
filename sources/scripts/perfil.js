@@ -223,7 +223,7 @@ cargarPostUsuario = async (current) => {
         pGallery.innerHTML = ''
             response.forEach((res) => {
                 pGallery.innerHTML += ` 
-                <div class="gallery" id="gallery">    
+                <div class="gallery" id="gallery2" onclick="EditarPost('${res.id}')">    
                     <div class="gallery-item" tabindex="0">
         
                         <img src="${res.data().photo}" class="gallery-image" alt="${res.data().uid}">
@@ -238,6 +238,7 @@ cargarPostUsuario = async (current) => {
                         </div>
         
                     </div>
+                    <div>${res.data().comentario}</div>
                 </div>`
             })
     })
@@ -296,4 +297,24 @@ recuperarPassword = async (current) => {
             // An error happened.
           });
     }    
+}
+
+EditarPost = async (uid) => {
+    console.log(uid)
+       
+    // let usuarioId = current.uid.toString()
+    //     let txtUsuario = document.getElementById('txtUsuario').value
+    //     let txtBiografia = document.getElementById('txtBiografia').value
+       
+    //     db.collection("post").where("uid","==",usuarioId).get().then(function(response){
+    //         response.forEach((res) => {
+    //             let estatus = db.collection('users').doc(res.id).update({
+    //                 username : txtUsuario,
+    //                 comentario : txtBiografia
+    //             })
+    //         })
+    //     }) 
+    //     setTimeout(() => {
+    //             recargar()
+    //     }, 3000);
 }

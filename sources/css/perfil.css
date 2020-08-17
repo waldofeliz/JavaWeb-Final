@@ -487,3 +487,12 @@ Remove or comment-out the code block below to see how the browser will fall-back
 }
 
 /* END Perfil */
+
+
+
+#gallery2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
